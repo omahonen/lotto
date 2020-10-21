@@ -1,0 +1,2 @@
+# lotto
+Lotto! Lottery simulator
