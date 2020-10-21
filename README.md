@@ -5,13 +5,13 @@ Exercise on packages, documentation, code reusability and maintainability, and a
 # Lotto!
 A lottery simulator.
 
-A program that can be used to simulate basic lottery number drawings and then test how long it will take you to win the jackpot. Currently the program reruns the simulation if it took more time than a human lifespan.
+A program that can be used to simulate basic lottery number drawings and then test how long it will take for you to win the jackpot. Currently the program reruns the simulation if it took more time than a human lifespan.
 
 ![Exmaple run](/img/example.png "Example of running the simulation")
 
 You can either feed your numbers directly as command line arguments or enter them in the program.
 
-Lottery parameters are currently defined as constants inside the main class. At the moment you can change the size of the number pool and the amount of numbers to draw. The ifespan limit is also defined there.
+Lottery parameters are currently defined as constants inside the main class. At the moment you can change the size of the number pool and the amount of numbers to draw. The lifespan limit is also defined there.
 
 Included are some utility classes for handling arrays, user input and random numbers.
 
