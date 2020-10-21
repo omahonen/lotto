@@ -101,8 +101,8 @@ public class Lotto {
                 }
                 weeksPassed++;
                 int matchingNumbers = Arrays.containsSameValues(numbers, lotto);
-                while (matchingNumbers > bestResult) {
-                    bestResult++;
+                if (matchingNumbers > bestResult) {
+                    bestResult = matchingNumbers;
                     yearsPassed = (int) (weeksPassed / WEEKS_TO_YEAR);
                     System.out.println("Got " + bestResult + " right! Took " + yearsPassed + " years");
                 }
