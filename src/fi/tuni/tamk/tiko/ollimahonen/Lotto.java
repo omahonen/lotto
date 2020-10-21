@@ -8,7 +8,8 @@ import fi.tuni.tamk.tiko.ollimahonen.util.MyConsole;
  * Lotto! A program that simulates playing the lottery.
  * 
  * The user can input their choice of numbers and the computer then performs the
- * drawing of the numbers. Statistics are given on how long it took get
+ * drawing of the numbers. Statistics are given on how long it took get X amount of numbers correct.
+ * Can also show the randomly selected numbers for each draw (this will be VERY verbose).
  * 
  * @author Olli Mähönen
  */
@@ -23,19 +24,20 @@ public class Lotto {
     static final int LIFESPAN = 120; // Lifespan of the player in years
     static boolean showLottoNumbers = false; // Should we show each randomly drawn lotto number set
 
-
     /**
      * Main program. Gets the user's selection of lottery numbers and then
      * randomizes lottery drawings until we get all numbers right.
      * 
      * Prints out statistics on how long it took to get X amount of numbers right.
      * 
-     * @param args Command line parameters. Can be used to provide the user's lottery numbers from the command line.
+     * @param args Command line parameters. Can be used to provide the user's
+     *             lottery numbers from the command line.
      */
     public static void main(String[] args) {
         int[] numbers = new int[LOTTO_NUMBERS];
-        
-        // Check if lottery numbers were given as command line arguments. Amount of arguments has to match what we're expecting.
+
+        // Check if lottery numbers were given as command line arguments. Amount of
+        // arguments has to match what we're expecting.
         boolean argumentConversion = false; // Indicates whether the argument conversion succeeded.
         if (args.length == numbers.length) {
             argumentConversion = true;
@@ -56,7 +58,8 @@ public class Lotto {
             }
         }
 
-        // Ask for the user numbers if none were given as command line arguments (or parsing failed)
+        // Ask for the user numbers if none were given as command line arguments (or
+        // parsing failed)
         if (!argumentConversion) {
             String request = "Please give a unique number between [1, " + LOTTO_HIGHEST_NUMBER + "]";
             for (int i = 0; i < numbers.length; ++i) {
@@ -71,17 +74,13 @@ public class Lotto {
             }
         }
 
-
         // Check if the user wants to see the numbers for each round
-        String input = "";
-        while (!input.equals("Y") && !input.equals("N")) {
-            System.out.println("Do you want to see the lottery numbers for each round? [Y/N]");
-            input = System.console().readLine().toUpperCase();
-            if (input.equals("Y")) {
-                showLottoNumbers = true;
-            } else if (input.equals("N")) {
-                showLottoNumbers = false;
-            }
+        String[] options = { "Y", "N" };
+        String input = MyConsole.readString("Do you want to see the lottery numbers for each round?", options, true);
+        if (input.equalsIgnoreCase("Y")) {
+            showLottoNumbers = true;
+        } else if (input.equalsIgnoreCase("N")) {
+            showLottoNumbers = false;
         }
 
         // Sort low to high

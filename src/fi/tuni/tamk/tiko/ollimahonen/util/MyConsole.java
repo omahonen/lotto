@@ -61,4 +61,32 @@ public class MyConsole {
         return value;
     }
 
+    /**
+     * Attempts to read string input from console, and makes sure it matches one of the provided valid inputs.
+     * Can ignore case if wanted. If input doesn't match, repeats message prompt and tries again.
+     * @param prompt Text prompt that is shown to the user
+     * @param validInputs List of valid options. If the list is empty, will accept any input.
+     * @param ignoreCase Sets whether we want to ignore case or not
+     * @return The validated user input. Note that this is not converted to upper- or lowercase.
+     */
+    public static String readString(String prompt, String[] validInputs, boolean ignoreCase) {
+        String input = "";
+        boolean matched = false;
+        // Keep asking until we get a valid match
+        while (!matched) {
+            System.out.println(prompt + " " + java.util.Arrays.toString(validInputs));
+            input = System.console().readLine();
+            // Compare input to valid inputs. Ignore case if needed.
+            for (int i = 0; i < validInputs.length && !matched; ++i) {
+                if (ignoreCase ? input.equalsIgnoreCase(validInputs[i]) : input.equals(validInputs[i])) {
+                    matched = true;
+                }
+            }
+            // Guard against infinite loop if the list is empty.
+            if (validInputs.length == 0) {
+                matched = true;
+            }
+        }
+        return input;
+    }
 }
