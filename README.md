@@ -9,7 +9,7 @@ A program that can be used to simulate basic lottery number drawings and then te
 
 ![Exmaple run](/img/example.png "Example of running the simulation")
 
-You can either feed your numbers directly the command line arguments or enter them in the program.
+You can either feed your numbers directly as command line arguments or enter them in the program.
 
 Lottery parameters are currently defined as constants inside the main class. At the moment you can change the size of the number pool and the amount of numbers to draw. The ifespan limit is also defined there.
 
